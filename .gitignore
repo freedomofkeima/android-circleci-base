@@ -1,0 +1,13 @@
+## Android related stuffs
+/bin
+/build
+/gen
+.gradle/
+*.iml
+local.properties
+gradle.properties
+
+## Others
+.idea/
+.DS_Store
+

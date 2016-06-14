@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "freedomofkeima.androidbase"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        resConfigs "en"
+    }
+    signingConfigs {
+        debug {}
+        // Create signing config for release and(or) ci
+        /*
+        release {
+            storeFile file(productKeyStore)
+            storePassword productKeyStorePassword
+            keyAlias productKeyAlias
+            keyPassword productKeyAliasPassword
+        }
+         */
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            versionNameSuffix '-dev'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug // replace this value with signingConfigs.release
+        }
+        ci {
+            debuggable true
+            minifyEnabled false
+            versionNameSuffix '-ci'
+            signingConfig signingConfigs.debug // replace this value with signingConfigs.ci
+        }
+    }
+    testBuildType 'ci'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // Appcompat
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    // Android Support Libs
+    compile 'com.android.support:support-v4:23.0.1'
+    // Timber (Hide Log.d from production environment)
+    // Check https://github.com/JakeWharton/timber
+    compile 'com.jakewharton.timber:timber:4.1.0'
+}
