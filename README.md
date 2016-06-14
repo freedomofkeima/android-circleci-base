@@ -4,7 +4,15 @@
 
 This repository contains my Android base code which can be used to build other Android applications. It has an integration to [CircleCI](https://circleci.com/).
 
-# How to Release
+## Development Requirements
+
+* Android SDK
+* Android Studio 1.0+
+* Android 4.0+
+* Git
+* CircleCI account (free for public repositories)
+
+## How to Release
 
 You need to configure following values in `gradle.properties` and update your `build.gradle` file.
 
