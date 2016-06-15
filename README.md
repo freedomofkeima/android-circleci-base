@@ -12,6 +12,31 @@ This repository contains my Android base code which can be used to build other A
 * Git
 * CircleCI account (free for public repositories)
 
+## Directory Structure
+
+```
+├── assets
+|
+├── java/freedomofkeima/androidbase
+|   ├── activity
+|   |   └── MainActivity.java
+|   ├── adapter
+|   ├── exception
+|   ├── fragment
+|   ├── helper
+|   |   ├── AsyncTaskResult.java
+|   |   ├── IAsyncTaskOwner.java
+|   |   ├── PreferencesManager.java
+|   |   └── VersionHelper.java
+|   ├── model
+|   ├── task
+|   |   └── ExampleTask.java
+|   ├── Constants.java
+|   └── FreedomofkeimaApplication.java
+|
+└── res
+```
+
 ## How to Release
 
 You need to configure following values in `gradle.properties` and update your `build.gradle` file.
@@ -41,7 +66,7 @@ $ ./gradlew -i connectedAndroidTest --stacktrace
 
 ## Additional Information
 
-CircleCI sometimes throws an exception `com.android.ddmlib.ShellCommandUnresponsiveException`. If this problem occurs, you need to press rebuild it again.
+CircleCI sometimes throws an exception `com.android.ddmlib.ShellCommandUnresponsiveException`. It may take 5 - 10 minutes until we can use the AVD for testing (for time being, we circumvented it with `sleep: 300`). If this problem occurs, you need to press rebuild it again.
 
 Guidelines:
 
