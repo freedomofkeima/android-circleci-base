@@ -1,11 +1,23 @@
+machine:
+  environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+    _JAVA_OPTIONS: "-Xms512m -Xmx1024m"
+  java:
+    version: oraclejdk8
+
 dependencies:
   pre:
-    - echo y | android update sdk -u -a -t addon-google_apis-google-22
-    - echo y | android update sdk -u -a -t sys-img-armeabi-v7a-android-22
-    - echo n | android create avd -n testing -f -t android-22 -b google_apis/armeabi-v7a
+    - echo y | android update sdk -u -a -t android-25
+    - echo y | android update sdk -u -a -t tools
+    - echo y | android update sdk -u -a -t platform-tools
+    - echo y | android update sdk -u -a -t build-tools-25.0.3
+    - echo y | android update sdk -u -a -t extra-android-m2repository
+    - echo y | android update sdk -u -a -t extra-android-support
+
 test:
   pre:
-    - emulator -avd testing -no-audio -no-window -no-boot-anim:
+    - emulator -avd circleci-android22 -no-audio -no-window -no-boot-anim:  # run tests using Android 22 because of CircleCI problem
         background: true
         parallel: true
     - circle-android wait-for-boot
