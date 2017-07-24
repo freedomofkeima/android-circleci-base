@@ -21,6 +21,7 @@ test:
         background: true
         parallel: true
     - circle-android wait-for-boot
+    - sleep 300
 
   override:
     - ./gradlew assembleDebug
